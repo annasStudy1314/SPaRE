@@ -1,0 +1,14 @@
+{
+  "example_type": "synthetic_input_description",
+  "input": {
+    "kind": "single_channel_sar_amplitude",
+    "shape": [1, 1, 128, 128],
+    "layout": "batch, channel, height, width",
+    "dtype": "float32"
+  },
+  "output_schema": {
+    "class_scores_shape": [1, 40],
+    "layout": "batch, class"
+  },
+  "inference_performed": false
+}
