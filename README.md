@@ -2,7 +2,7 @@
 
 **Scattering-Prior-Aware Representation Enhancement for Fine-Grained SAR Vehicle Recognition**
 
-[Interface Demo](demo/) | [Data](https://github.com/waterdisappear/ATRNet-STAR) | [中文说明](README_zh.md)
+[Quick Start](#quick-start) | [Interface Guide](demo/README.md) | [Data](https://github.com/waterdisappear/ATRNet-STAR) | [中文说明](README_zh.md)
 
 ## Overview
 
@@ -10,27 +10,63 @@ SPaRE studies fine-grained SAR vehicle recognition using single-channel amplitud
 images. It connects amplitude-derived scattering priors with task-feature
 refinement and local-response organization.
 
-The framework comprises Label-Free Scattering Prior Learning (LSPL),
-Prior-Guided Feature Refinement (PGFR), and Target Component Structure Learning
-(TCSL). LSPL learns scattering-related references without category or semantic
-part labels. PGFR uses the frozen references to refine task features. TCSL
-organizes local responses into component contexts for classification.
+The framework connects three complementary functions:
+
+| Module | Role |
+| --- | --- |
+| Label-Free Scattering Prior Learning (LSPL) | Learn scattering-related references without category or semantic part labels. |
+| Prior-Guided Feature Refinement (PGFR) | Use frozen references to refine task features. |
+| Target Component Structure Learning (TCSL) | Organize local responses into component contexts for classification. |
 
 This repository provides a project overview, an input/output interface
 demonstration, and links to the official dataset resources.
 
-## Interface Demonstration
+## Quick Start
+
+**Requirements:** Python 3.9 or later. The interface demo needs no external
+packages, GPU, dataset download, or model weights.
+
+Run from the repository root:
 
 ```bash
 python demo/interface_demo.py
+# Export the validated interface description.
+python demo/interface_demo.py --output interface_description.json
 ```
 
-The script uses only the Python standard library. It prints a schematic input
-description and output schema to illustrate the interface; it does not run model
-inference. All shapes in this example are illustrative.
+The script validates the bundled example and prints its JSON description.
+It demonstrates an interface, not model inference. The example describes a
+`[1, 1, 128, 128]` amplitude input and a `[1, 40]` class-score shape; it does not
+generate predicted scores or recognition results.
 
 Conceptually, the method accepts an individual SAR amplitude chip and produces
 vehicle-class scores. See [the interface notes](demo/README.md).
+
+## Repository Guide
+
+```text
+SPaRE/
+|-- README.md                  # English project overview
+|-- README_zh.md               # Chinese project overview
+|-- code/README.md             # Demo entry point
+|-- data/README.md             # Official dataset resources
+|-- demo/
+|   |-- README.md              # Interface specification and usage
+|   |-- example_input.json     # Synthetic input/output metadata
+|   `-- interface_demo.py      # Validator and JSON export CLI
+|-- tests/test_interface_demo.py
+`-- LICENSE
+```
+
+## Interface Checks
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The checks cover metadata validation, command-line execution, JSON export,
+invalid inputs, and input-file overwrite protection. They test the public
+interface demonstration, not recognition performance.
 
 ## Data
 
