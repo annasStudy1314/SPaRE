@@ -1,24 +1,23 @@
 # SPaRE
 
-**Scattering-prior-guided representation learning for fine-grained SAR vehicle recognition**
+**Scattering-Prior-Aware Representation Enhancement for Fine-Grained SAR Vehicle Recognition**
 
 [Interface Demo](demo/) | [Data](data/README.md) | [中文说明](README_zh.md)
 
-## Public Preview
+## Overview
 
-This repository currently provides a **documentation and interface demonstration**
-for SPaRE. The core implementation is not included in this pre-submission preview.
+SPaRE studies fine-grained SAR vehicle recognition using single-channel amplitude
+images. It connects amplitude-derived scattering priors with task-feature
+refinement and local-response organization.
 
-The public content is limited to:
+The framework comprises Label-Free Scattering Prior Learning (LSPL),
+Prior-Guided Feature Refinement (PGFR), and Target Component Structure Learning
+(TCSL). LSPL learns scattering-related references without category or semantic
+part labels. PGFR uses the frozen references to refine task features. TCSL
+organizes local responses into component contexts for classification.
 
-- A brief project description.
-- A schematic input/output example using synthetic metadata.
-- Links to the official ATRNet-STAR dataset and ATRBench documentation.
-
-Model internals, training code, proxy-generation algorithms, hyperparameter
-recipes, trained weights, and experiment records are **not publicly released**
-here. This repository cannot reproduce the paper's experiments, and its example
-does not perform SAR recognition.
+This repository provides a project overview, an input/output interface
+demonstration, and links to the official dataset resources.
 
 ## Interface Demonstration
 
@@ -26,9 +25,9 @@ does not perform SAR recognition.
 python demo/interface_demo.py
 ```
 
-The script uses only the Python standard library. It prints an example input
-description and an output schema. It does not instantiate a model, load images,
-make predictions, or report accuracy. All shapes are illustrative.
+The script uses only the Python standard library. It prints a schematic input
+description and output schema to illustrate the interface; it does not run model
+inference. All shapes in this example are illustrative.
 
 Conceptually, the method accepts an individual SAR amplitude chip and produces
 vehicle-class scores. See [the interface notes](demo/README.md).
@@ -44,13 +43,8 @@ This repository does not redistribute dataset files, dataset access credentials,
 or third-party model weights. Follow the authors' current access procedures and
 terms, and cite their work when using the data.
 
-## Release Scope
+## License
 
-This is a limited public preview, **not a full open-source implementation or a
-reproduction package**. No complete-code availability or future release date is
-promised by this page. Publication and citation information will be added when
-a public manuscript record is available.
-
-Only the small public interface script is covered by the MIT license in this
-repository. The license grants no rights to unreleased code, third-party data,
-checkpoints, or the manuscript.
+The interface example is provided under the [MIT license](LICENSE).
+Third-party datasets and other resources remain subject to their respective
+licenses and terms.
