@@ -2,7 +2,7 @@
 
 **Scattering-Prior-Aware Representation Enhancement for Fine-Grained SAR Vehicle Recognition**
 
-[Interface Demo](demo/) | [Data](data/README.md) | [中文说明](README_zh.md)
+[Interface Demo](demo/) | [Data](https://github.com/waterdisappear/ATRNet-STAR) | [中文说明](README_zh.md)
 
 ## Overview
 
